@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c++,venv,visualstudio,visualstudiocode,git,qt,qtcreator,macos,emacs,windows,linux,cmake,vim,xcode,pycharm,gitbook
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,venv,visualstudio,visualstudiocode,git,qt,qtcreator,macos,emacs,windows,linux,cmake,vim,xcode,pycharm,gitbook
 
+
+### Arseniy .gitignore ###
+*.vscode
+
 ### C++ ###
 # Prerequisites
 *.d
