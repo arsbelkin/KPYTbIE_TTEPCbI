@@ -4,6 +4,7 @@
 
 ### KPYTbIE_TTEPCbI ###
 *.vscode
+build/
 
 ### C++ ###
 # Prerequisites

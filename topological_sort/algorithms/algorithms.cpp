@@ -2,7 +2,8 @@
 #include "algorithms.h"
 #include "../tests/DataSetRegister.h"
 #include "../tests/tests_functions.h"
-#include "stack"
+#include "../tests/logger.h"
+#include <sstream>
 
 using namespace std;
 
@@ -12,24 +13,27 @@ static bool can_be_sorted = 0;
 
 
 int main(){
-    // auto DataSets = GenerateDataSets();
-    auto DataSets = std::stack<DataSet>({
-        {"correct data", readGraphFromFile("tests/datasets/correctTS.txt"), 1},
-        {"cycle graph", readGraphFromFile("tests/datasets/cycleTS.txt"), 0},
-        {"difficult graph", readGraphFromFile("tests/datasets/difficultGraph.txt"), 1},
-        {"empty graph", {}, 1}
-    });
+    Logger logger("log.txt");
+    ostringstream oss{};
+    
+
+    auto DataSets = GenerateDataSets();
 
     while (!DataSets.empty()){
-        auto& ds = DataSets.top();
-        dataset = ds.description;
-        auto& graph = ds.graph;
-        can_be_sorted = ds.can_be_sorted;
+        auto& ds = DataSets.front();
 
-        RUN(topologicalSort);
+        oss << endl << endl << "***************** " << ds.description << " *****************" << endl;
+
+        // так будет вызываться ваш алгоритм сортировки     
+        //RUN(первый_алгоритм);
+        //RUN(второй_алгоритм);
 
         DataSets.pop();
+
+        oss << "**************************************" << endl;
     }
+
+    logger.log(oss.str());
 
     return 0;
 }

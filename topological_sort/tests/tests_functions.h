@@ -2,12 +2,20 @@
 #include <unordered_map>
 #include <vector>
 #include "../algorithms/algorithms.h"
+#include "DataSetRegister.h"
+#include "logger.h"
 
 
 // макрос для запуска кода
 #define RUN(x) { \
-        Run(#x, x, graph, dataset);\
+        Run(#x, x, ds, logger, oss);\
     }
+
+//функция для вывода результата топологической сортировки
+void print_TS(std::vector<std::string> &order, std::ostringstream &oss);
+
+//подсчет ребер графа
+int edges_number(std::unordered_map<std::string, std::vector<std::string>> &graph);
 
 //функция, которая проверяет, что order содержит неповторяющиеся элементы
 bool IsSet(std::vector<std::string> &order);
@@ -19,9 +27,4 @@ bool IsCorrectTopologicalSort(
 );
 
 // основная функция, которая производит расчет времени
-void Run(std::string method_name,
-    Algorithm p,
-    std::unordered_map<std::string,
-    std::vector<std::string>> &graph,
-    std::string &dataset
-);
+void Run(std::string method_name, Algorithm p, DataSet ds, Logger &logger, std::ostringstream &oss);

@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include <stack>
-#include "GraphReader.h"
+#include <queue>
+#include <unordered_map>
+#include <vector>
 
 
 struct DataSet{
@@ -10,12 +11,4 @@ struct DataSet{
     bool can_be_sorted;
 };
 
-
-std::stack<DataSet> GenerateDataSets(){
-    return std::stack<DataSet>({
-        {"correct data", readGraphFromFile("datasets/correctTS.txt"), 1},
-        {"cycle graph", readGraphFromFile("datasets/cycleTS.txt"), 0},
-        {"difficult graph", readGraphFromFile("datasets/difficultGraph.txt"), 1},
-        {"empty graph", {}, 1}
-    });
-}
+std::queue<DataSet> GenerateDataSets();
