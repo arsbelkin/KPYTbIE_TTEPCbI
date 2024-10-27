@@ -1,4 +1,4 @@
-# KPYTbIE_TTEPCbI:oil_drum:
+# KPYTbIE_TTEPCbI :oil_drum:
 
 <h3>Алгоритмы на графах. Методы топологической сортировки</h3>
 
