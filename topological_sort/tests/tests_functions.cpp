@@ -75,13 +75,10 @@ bool IsCorrectTopologicalSort(
 void Run(std::string method_name, Algorithm p, DataSet ds, Logger &logger, std::ostringstream &oss){
     oss << "----------------------------------------" << endl;
 
-
     auto start = system_clock::now();
     std::vector<std::string> result = p(ds.graph);
     auto finish = system_clock::now();
     auto time = duration_cast<microseconds>(finish - start).count();
-
-    
 
     oss << "Method: " << method_name << endl;
     oss << "Dataset: " << ds.description << endl;
