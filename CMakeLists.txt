@@ -11,6 +11,10 @@ include_directories("topological_sort/tests/")
 
 set(SRC_DIR topological_sort/tests/)
 
+if(WIN32)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
 set(SRC_LIST
     ${SRC_DIR}/DataSetRegister.cpp 
     ${SRC_DIR}/GraphReader.cpp 
