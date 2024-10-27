@@ -49,7 +49,12 @@ bool IsCorrectTopologicalSort(
 }
 
 
-void Run(std::string method_name, Algorithm p, std::unordered_map<std::string, std::vector<std::string>> &graph, std::string &dataset){
+void Run(std::string method_name,
+    Algorithm p,
+    std::unordered_map<std::string,
+    std::vector<std::string>> &graph,
+    std::string &dataset
+){
     auto start = system_clock::now();
     std::vector<std::string> result = p(graph);
     auto finish = system_clock::now();
