@@ -8,7 +8,7 @@
 
 // макрос для запуска кода
 #define RUN(x) { \
-        Run(#x, x, ds, logger, oss);\
+        Run(#x, x, ds, oss);\
     }
 
 //функция для вывода результата топологической сортировки
@@ -27,4 +27,4 @@ bool IsCorrectTopologicalSort(
 );
 
 // основная функция, которая производит расчет времени
-void Run(std::string method_name, Algorithm p, DataSet ds, Logger &logger, std::ostringstream &oss);
+void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &oss);

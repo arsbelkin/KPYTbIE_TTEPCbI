@@ -72,7 +72,7 @@ bool IsCorrectTopologicalSort(
 }
 
 
-void Run(std::string method_name, Algorithm p, DataSet ds, Logger &logger, std::ostringstream &oss){
+void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &oss){
     oss << "----------------------------------------" << endl;
 
     auto start = system_clock::now();
