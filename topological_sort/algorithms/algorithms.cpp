@@ -8,10 +8,6 @@
 using namespace std;
 
 
-static string dataset = "";
-static bool can_be_sorted = 0;
-
-
 int main(){
     Logger logger("log.txt");
     ostringstream oss{};
