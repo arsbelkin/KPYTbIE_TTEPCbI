@@ -5,6 +5,7 @@
 #include "../tests/logger.h"
 #include <sstream>
 
+
 using namespace std;
 
 
@@ -25,6 +26,7 @@ int main(){
         //RUN(topologicalSort_by_Belkin)
         //RUN(второй_алгоритм);
         //RUN(третий_алгоритм);
+        RUN(dfs_by_Makkoveeva);
 
         DataSets.pop();
 

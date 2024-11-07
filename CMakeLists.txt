@@ -17,6 +17,7 @@ set(SRC_LIST
     ${SRC_DIR}/logger.cpp 
     ${SRC_DIR}/tests_functions.cpp
     ${SRC_DIR}/../algorithms/algorithms.cpp
+    ${SRC_DIR}/../algorithms/dfs_by_Makkoveeva.cpp
     # здесь указывается относительный путь до вашего файла
     # пример:
     # ${SRC_DIR}/../algorithms/topological_sort.cpp
