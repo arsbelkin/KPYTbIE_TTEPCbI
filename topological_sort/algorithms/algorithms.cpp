@@ -25,6 +25,7 @@ int main(){
         //RUN(topologicalSort_by_Belkin)
         //RUN(второй_алгоритм);
         //RUN(третий_алгоритм);
+        RUN(Demukrone_by_Balpeisov);
         RUN(TaryanSort_by_Maslov);
 
         DataSets.pop();
