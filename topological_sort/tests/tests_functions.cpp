@@ -92,7 +92,7 @@ void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &o
     if (ds.can_be_sorted){
         oss << IsCorrectTopologicalSort(ds.graph, result) << endl;
     } else if ((result[0] == "-1") && !ds.can_be_sorted){
-        oss << "Is sorted correctly: " << "1" << endl;
+        oss << "1" << endl;
     }
 
     oss << "----------------------------------------" << endl;;

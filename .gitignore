@@ -5,6 +5,7 @@
 ### KPYTbIE_TTEPCbI ###
 *.vscode
 build/
+*.bat
 
 ### C++ ###
 # Prerequisites

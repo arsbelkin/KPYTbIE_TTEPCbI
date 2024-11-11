@@ -20,6 +20,7 @@ set(SRC_LIST
     # здесь указывается относительный путь до вашего файла
     # пример:
     # ${SRC_DIR}/../algorithms/topological_sort.cpp
+    ${SRC_DIR}/../algorithms/TaryanSort_by_Maslov.cpp
     )
 
 add_executable(${PROJECT_NAME}.exe ${SRC_LIST})
