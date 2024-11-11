@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 void dfs(string node, unordered_map<string, vector<string>>& graph, unordered_map<string, bool>& visited, unordered_map<string, bool> visitedway, bool& cycle)
 {
     // помечаем текущую вершину как посещенную
@@ -60,10 +61,10 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
 
     for (auto& pair: graph)
     {
-        id_sv = std::ranges::find(begin(vertex), end(vertex), pair.first) - begin(vertex);
+        id_sv = find(begin(vertex), end(vertex), pair.first) - begin(vertex);
         for (auto& v: pair.second)
         {
-            id_ev = std::ranges::find(begin(vertex), end(vertex), v) - begin(vertex);
+            id_ev = find(begin(vertex), end(vertex), v) - begin(vertex);
             adj_matrix[id_sv][id_ev] = 1;
         }
     }
@@ -72,7 +73,7 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
     {
         for (int id_col = 0; id_col<n; id_col++)
         {
-            if (std::ranges::find(sorted_graph.begin(), sorted_graph.end(), vertex[id_col]) != sorted_graph.end())
+            if (find(sorted_graph.begin(), sorted_graph.end(), vertex[id_col]) != sorted_graph.end())
             {
                 continue;
             }
@@ -94,7 +95,7 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
 
         for (auto& el: pop_elem)
         {
-            id_sv = std::ranges::find(begin(vertex), end(vertex), el) - begin(vertex);
+            id_sv = find(begin(vertex), end(vertex), el) - begin(vertex);
             for (id_ev = 0; id_ev<n; id_ev++)
             {
                 adj_matrix[id_sv][id_ev] = 0;
