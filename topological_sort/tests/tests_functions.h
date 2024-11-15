@@ -12,7 +12,10 @@
     }
 
 //функция для вывода результата топологической сортировки
-void print_TS(std::vector<std::string> &order, std::ostringstream &oss);
+void print_TS(std::vector<std::string> &order, std::ostringstream &oss, std::string file_name);
+
+//функция для записи в файл топологической сортировки
+void save_TS(std::vector<std::string> &TS, std::ofstream &file);
 
 //подсчет ребер графа
 int edges_number(std::unordered_map<std::string, std::vector<std::string>> &graph);
@@ -27,4 +30,4 @@ bool IsCorrectTopologicalSort(
 );
 
 // основная функция, которая производит расчет времени
-void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &oss);
+void Run(std::string method_name, Algorithm alg, DataSet ds, std::ostringstream &oss);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "tests_functions.h"
+#include <fstream>
 #include <string>
 #include <sstream>
 #include <chrono>
@@ -14,14 +15,28 @@ using namespace std;
 using namespace chrono;
 
 
-void print_TS(std::vector<std::string> &order, std::ostringstream &oss){
+void save_TS(std::vector<std::string> &TS, std::ofstream &file){
+    for (auto& v: TS){
+        file << v << endl;
+    }
+}
+
+void print_TS(std::vector<std::string> &order, std::ostringstream &oss, std::string file_name){
     oss << "Topological sort: ";
-    for (auto& v: order) {
-        oss << v << " ";
+
+    if (order.size() > 100){
+        ofstream file("TS/" + file_name + ".txt");
+        if (file.is_open()) {
+            save_TS(order, file);
+            oss << "was saved in file " + file_name + ".txt";
+        }
+    } else {
+        for (auto& v: order) {
+            oss << v << " ";
+        } 
     }
     oss << std::endl;
 }
-
 
 int edges_number(std::unordered_map<std::string, std::vector<std::string>> &graph){
     int counter = 0;
@@ -72,11 +87,11 @@ bool IsCorrectTopologicalSort(
 }
 
 
-void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &oss){
+void Run(std::string method_name, Algorithm alg, DataSet ds, std::ostringstream &oss){
     oss << "----------------------------------------" << endl;
 
     auto start = system_clock::now();
-    std::vector<std::string> result = p(ds.graph);
+    std::vector<std::string> result = alg(ds.graph);
     auto finish = system_clock::now();
     auto time = duration_cast<microseconds>(finish - start).count();
 
@@ -86,14 +101,14 @@ void Run(std::string method_name, Algorithm p, DataSet ds, std::ostringstream &o
     oss << "Number of edges: " << edges_number(ds.graph) << endl;
     oss << "Can be sorted: " << ds.can_be_sorted << endl;
     oss << "Time: " << time << endl;
-    print_TS(result, oss);
+    print_TS(result, oss, method_name + " " + ds.description);
 
     oss << "Is sorted correctly: ";
     if (ds.can_be_sorted){
         oss << IsCorrectTopologicalSort(ds.graph, result) << endl;
-    } else if ((result[0] == "-1") && !ds.can_be_sorted){
-        oss << "1" << endl;
+    } else {
+        oss << (result[0] == "-1") << endl;
     }
 
-    oss << "----------------------------------------" << endl;;
+    oss << "----------------------------------------" << endl;
 }
