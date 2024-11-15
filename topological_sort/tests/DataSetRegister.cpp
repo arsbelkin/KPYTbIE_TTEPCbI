@@ -12,5 +12,6 @@ std::queue<DataSet> GenerateDataSets(){
         {"large numeric correct graph", readGraphFromFile("../../topological_sort/tests/datasets/files/largeCorrectGraph.txt"), 1},
         {"small cycle graph", readGraphFromFile("../../topological_sort/tests/datasets/files/smallCycleGraph.txt"), 0},
         {"large numeric cycle graph", readGraphFromFile("../../topological_sort/tests/datasets/files/largeCycleGraph.txt"), 0},
+        {"star graph", readGraphFromFile("../../topological_sort/tests/datasets/files/star_graph.txt"), 1},
     });
 }
