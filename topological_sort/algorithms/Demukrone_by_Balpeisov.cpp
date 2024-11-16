@@ -23,7 +23,6 @@ void dfs(string node, unordered_map<string, vector<string>>& graph, unordered_ma
         {
             cycle = true;
             return;
-
         }
     }
 }
@@ -39,23 +38,19 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
     bool cycle = false; //наличие цикла
     unordered_map<string, bool> visited; //посещённые вершины за все иттерации
     unordered_map<string, bool> visitedway; //посещённые вершины за эту иттерацию
-    int sum_row; //полустепень входа
-    vector<string> sorted_graph, pop_elem; //сортированный граф, удалённые вершины с нулевым уровнем
+    int sum_col; //полустепень входа
+    vector<string> sorted_graph, cycle_graph = {"-1"}, pop_elem; //сортированный граф, для графа с циклами, удалённые вершины с нулевым уровнем
 
-    for (auto& pair : graph) {
+    for (auto& pair: graph)     
+    {
         if (cycle) 
         {
-            sorted_graph.push_back("-1");
-            return sorted_graph;
+            return cycle_graph;
         }
         string node = pair.first;
         if (!visited[node]) {
             dfs(node, graph, visited,visitedway, cycle);
         }
-    }
-
-    for (auto& pair: graph)     
-    {
         vertex.push_back(pair.first);
     }
 
@@ -77,21 +72,18 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
             {
                 continue;
             }
-            sum_row = 0;
+            sum_col = 0;
             for (int id_row = 0; id_row<n; id_row++)
             {
-                sum_row += adj_matrix[id_row][id_col];
+                sum_col += adj_matrix[id_row][id_col];
             }
-            lvl_vertex.emplace(vertex[id_col], sum_row);
+            lvl_vertex.emplace(vertex[id_col], sum_col);
+            if (sum_col == 0)
+            {
+                pop_elem.push_back(vertex[id_col]);
+                sorted_graph.push_back(vertex[id_col]);
+            }
         }
-
-        for (auto& pair: lvl_vertex)
-        {
-            if (pair.second == 0)
-                pop_elem.push_back(pair.first);
-        }
-
-        sorted_graph.insert(sorted_graph.end(), pop_elem.begin(), pop_elem.end());
 
         for (auto& el: pop_elem)
         {
