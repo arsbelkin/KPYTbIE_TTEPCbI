@@ -7,7 +7,6 @@
 using namespace std;
 
 
-//Алгоритм Кана
 std::vector<std::string> Kan_by_Volkov(std::unordered_map<std::string, std::vector<std::string>>& graph)
 {
 	std::unordered_map<std::string, int> inDegree;
