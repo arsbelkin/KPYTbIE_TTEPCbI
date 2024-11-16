@@ -27,7 +27,9 @@ int main(){
         //RUN(третий_алгоритм);
         RUN(Demukrone_by_Balpeisov);
         RUN(TaryanSort_by_Maslov);
+        RUN(Kan_by_Volkov);
 
+        
         DataSets.pop();
 
         oss << "**************************************" << endl;
