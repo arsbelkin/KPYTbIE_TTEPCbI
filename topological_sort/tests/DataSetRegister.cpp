@@ -16,5 +16,7 @@ std::queue<DataSet> GenerateDataSets(){
         {"10000-100 graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-100_graph.txt"), 1},
         {"10000-5000 graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-5000_graph.txt"), 1},
         {"10000-10000 graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-10000_graph.txt"), 1},
+        {"10000-10000 cycle graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-10000_graph_cycle.txt"), 0},
+        {"10000-30000 graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-30000_graph.txt"), 1},
     });
 }
