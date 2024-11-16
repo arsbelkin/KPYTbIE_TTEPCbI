@@ -25,7 +25,7 @@ int main(){
         //RUN(topologicalSort_by_Belkin)
         //RUN(второй_алгоритм);
         //RUN(третий_алгоритм);
-
+        RUN(Kan_by_Volkov);
         DataSets.pop();
 
         oss << "**************************************" << endl;

@@ -6,6 +6,5 @@
 
 using Algorithm = std::vector<std::string>(*)(std::unordered_map<std::string, std::vector<std::string>>&);
 
-// объявите ваши алгоритмы ниже
-// Пример:
-// std::vector<std::string> topologicalSort_by_Belkin(std::unordered_map<std::string, std::vector<std::string>>);
+
+std::vector<std::string> Kan_by_Volkov(std::unordered_map<std::string, std::vector<std::string>>& graph);
