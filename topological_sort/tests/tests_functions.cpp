@@ -49,20 +49,22 @@ int edges_number(std::unordered_map<std::string, std::vector<std::string>> &grap
 }
 
 
-bool IsSet(std::vector<std::string> &order){
+bool IsSet(const std::vector<std::string> &order){
     unordered_set<std::string> order_set;
 
-    for (auto& elem: order){
-        order_set.emplace(elem);
+    for (const auto& elem: order){
+        if (!order_set.emplace(elem).second){
+            return false;
+        }
     }
 
-    return order.size() == order_set.size();
+    return true;
 }
 
 
 bool IsCorrectTopologicalSort(
-    std::unordered_map<std::string, std::vector<std::string>> &graph,
-    std::vector<std::string> &order
+    const std::unordered_map<std::string, std::vector<std::string>> &graph,
+    const std::vector<std::string> &order
 ){
     if ((graph.size() != order.size()) || !IsSet(order)){
         return false;
@@ -70,13 +72,13 @@ bool IsCorrectTopologicalSort(
 
     unordered_map<string, int> position;
     
-    for (auto i=0; i < order.size(); ++i){
+    for (int i=0; i < order.size(); ++i){
         position[order[i]] = i;
     }
 
     for (const auto& pair: graph){
-        string u = pair.first;
-        for (string v: pair.second){
+        const string& u = pair.first;
+        for (const string& v: pair.second){
             if (position[u] > position[v]){
                 return false;
             }

@@ -21,12 +21,12 @@ void save_TS(std::vector<std::string> &TS, std::ofstream &file);
 int edges_number(std::unordered_map<std::string, std::vector<std::string>> &graph);
 
 //функция, которая проверяет, что order содержит неповторяющиеся элементы
-bool IsSet(std::vector<std::string> &order);
+bool IsSet(const std::vector<std::string> &order);
 
 //функция, которая проверят является ли топологическая сортировка корректной
 bool IsCorrectTopologicalSort(
-    std::unordered_map<std::string, std::vector<std::string>> &graph,
-    std::vector<std::string> &order
+    const std::unordered_map<std::string, std::vector<std::string>> &graph,
+    const std::vector<std::string> &order
 );
 
 // основная функция, которая производит расчет времени
