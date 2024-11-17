@@ -2,55 +2,57 @@
 #include <unordered_map>
 #include<vector>
 #include <iostream>
+#include <string>
+#include<stack>
+#include <algorithm>
 
 using namespace std;
-
 
 vector<string> dfs_by_Makkoveeva(unordered_map<string, vector<string>> &graph) 
 {
 	vector<string>sortedgraph;
 	unordered_map<string, int>visited;
-	vector<string>nodes;
+	vector<string>stack;
+	bool cycle = false;
 	for (auto& pair:graph)
 	{
-		nodes.push_back(pair.first);
-	}
-	for (string& node:nodes)
-	{
+		const string& node=pair.first;
 		if (visited[node] == 0)
 		{
-			vector<string>path;
-			unordered_map<string, int>currentpath;
-			path.push_back(node);
-			currentpath[node] = 1;
-			while (!path.empty())
+			stack.push_back(node);
+			while (!stack.empty()&&!cycle)
 			{
-				string currentnode = path.back();
-				if (visited[currentnode] == 1)
-				{
-					return { " - 1" };
-				}
+				string currentnode = stack.back();
+				stack.pop_back();
 				if (visited[currentnode] == 0)
 				{
 					visited[currentnode] = 1;
-					for (string& neighbor : graph[currentnode])
+					stack.push_back(currentnode);
+					for (const string& neighbor : graph[currentnode])
 					{
 						if (visited[neighbor] == 0)
 						{
-							path.push_back(neighbor);
-							currentpath[neighbor] = 1;
+							stack.push_back(neighbor);
+						}
+						else if (visited[neighbor]==1)
+						{
+							cycle=true;
+							break;
 						}
 					}
 				}
-				if (currentpath[currentnode] == 1)
+				else if (visited[currentnode] == 1)
 				{
-					currentpath[currentnode] = 2;
+					visited[currentnode] = 2;
 					sortedgraph.push_back(currentnode);
-					path.pop_back();
 				}
+			}
+			if (cycle)
+			{
+				return { "-1" };
 			}
 		}
 	}
-	reverse(sortedgraph.begin(), sortedgraph.end());
+	reverse(sortedgraph.begin(),sortedgraph.end());
 	return sortedgraph;
 }
