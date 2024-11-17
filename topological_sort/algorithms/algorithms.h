@@ -12,3 +12,4 @@ using Algorithm = std::vector<std::string>(*)(std::unordered_map<std::string, st
 std::vector<std::string> Demukrone_by_Balpeisov(std::unordered_map<std::string, std::vector<std::string>>& graph);
 std::vector<std::string> TaryanSort_by_Maslov(std::unordered_map<std::string, std::vector<std::string>>& graph);
 std::vector<std::string> Kan_by_Volkov(std::unordered_map<std::string, std::vector<std::string>>& graph);
+std::vector<std::string> dfs_by_Makkoveeva(std::unordered_map<std::string, std::vector<std::string>> &graph);

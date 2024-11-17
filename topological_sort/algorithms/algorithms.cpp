@@ -28,8 +28,8 @@ int main(){
         RUN(Demukrone_by_Balpeisov);
         RUN(TaryanSort_by_Maslov);
         RUN(Kan_by_Volkov);
+        RUN(dfs_by_Makkoveeva);
 
-        
         DataSets.pop();
 
         oss << "**************************************" << endl;

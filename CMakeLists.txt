@@ -23,6 +23,7 @@ set(SRC_LIST
     ${SRC_DIR}/../algorithms/Demukrone_by_Balpeisov.cpp
     ${SRC_DIR}/../algorithms/TaryanSort_by_Maslov.cpp
     ${SRC_DIR}/../algorithms/Kan_by_Volkov.cpp
+    ${SRC_DIR}/../algorithms/dfs_by_Makkoveeva.cpp
     )
 
 add_executable(${PROJECT_NAME}.exe ${SRC_LIST})
