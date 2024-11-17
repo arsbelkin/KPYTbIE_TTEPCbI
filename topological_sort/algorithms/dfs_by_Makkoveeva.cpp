@@ -12,28 +12,32 @@ vector<string> dfs_by_Makkoveeva(unordered_map<string, vector<string>> &graph)
 {
 	vector<string>sortedgraph;
 	unordered_map<string, int>visited;
-	stack<string>s;
+	vector<string>stack;
+	bool cycle = false;
 	for (auto& pair:graph)
 	{
 		const string& node=pair.first;
 		if (visited[node] == 0)
 		{
-			s.push(node);
-			while (!s.empty())
+			stack.push_back(node);
+			while (!stack.empty()&&!cycle)
 			{
-				string currentnode = s.top();
+				string currentnode = stack.back();
+				stack.pop_back();
 				if (visited[currentnode] == 0)
 				{
 					visited[currentnode] = 1;
-					for (string& neighbor : graph[currentnode])
+					stack.push_back(currentnode);
+					for (const string& neighbor : graph[currentnode])
 					{
 						if (visited[neighbor] == 0)
 						{
-							s.push(neighbor);
+							stack.push_back(neighbor);
 						}
-						else if (visited[neighbor])
+						else if (visited[neighbor]==1)
 						{
-							return { "-1" };
+							cycle=true;
+							break;
 						}
 					}
 				}
@@ -41,8 +45,11 @@ vector<string> dfs_by_Makkoveeva(unordered_map<string, vector<string>> &graph)
 				{
 					visited[currentnode] = 2;
 					sortedgraph.push_back(currentnode);
-					s.pop();
 				}
+			}
+			if (cycle)
+			{
+				return { "-1" };
 			}
 		}
 	}
