@@ -2,29 +2,28 @@
 #include <string>
 #include <unordered_map>
 #include "algorithms.h"
-#include <iostream>
 #include <stack>
 #include <sstream>
-
 using namespace std;
 
 void dfs(string node, unordered_map<string, vector<string>>& graph, unordered_map<string, bool>& visited, unordered_map<string, bool> visitedway, bool& cycle, stack<string>& Stack) {
     // Помечаем текущую вершину как посещенную
     visited[node] = true;
     visitedway[node] = true;
-    if (cycle)
-        return;
     // Рекурсивно посещаем все соседние вершины
     for (auto& neighbor: graph[node]) {
-        if (!visited[neighbor]) {
-            dfs(neighbor, graph, visited,visitedway, cycle, Stack);
-        }
+        if (cycle)
+            return;
         if (visitedway[neighbor])
         {
             cycle = true;
             return;
 
         }
+        if (!visited[neighbor]) {
+            dfs(neighbor, graph, visited,visitedway, cycle, Stack);
+        }
+
     }
 
     // Добавляем текущую вершину в стек после посещения всех соседей
@@ -44,9 +43,8 @@ vector<string> TaryanSort_by_Maslov(unordered_map<string, vector<string>>& graph
             sortedOrder.push_back("-1");
             return sortedOrder;
         }
-        string node = pair.first;
-        if (!visited[node]) {
-            dfs(node, graph, visited,visitedway, cycle, Stack);
+        if (!visited[pair.first]) {
+            dfs(pair.first, graph, visited,visitedway, cycle, Stack);
         }
     }
 
