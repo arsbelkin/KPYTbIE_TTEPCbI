@@ -87,30 +87,3 @@ bool IsCorrectTopologicalSort(
 
     return true;
 }
-
-
-void Run(std::string method_name, Algorithm alg, DataSet ds, std::ostringstream &oss){
-    oss << "----------------------------------------" << endl;
-
-    auto start = system_clock::now();
-    std::vector<std::string> result = alg(ds.graph);
-    auto finish = system_clock::now();
-    auto time = duration_cast<microseconds>(finish - start).count();
-
-    oss << "Method: " << method_name << endl;
-    oss << "Dataset: " << ds.description << endl;
-    oss << "Number of vertices: " << ds.graph.size() << endl;
-    oss << "Number of edges: " << edges_number(ds.graph) << endl;
-    oss << "Can be sorted: " << ds.can_be_sorted << endl;
-    oss << "Time: " << time << endl;
-    print_TS(result, oss, method_name + " " + ds.description);
-
-    oss << "Is sorted correctly: ";
-    if (ds.can_be_sorted){
-        oss << IsCorrectTopologicalSort(ds.graph, result) << endl;
-    } else {
-        oss << (result[0] == "-1") << endl;
-    }
-
-    oss << "----------------------------------------" << endl;
-}
