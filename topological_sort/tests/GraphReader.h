@@ -16,6 +16,9 @@
 //     const std::string &path_to_file
 // );
 
+std::unordered_map<int, std::vector<int>> ConvertStrToInt(
+    const std::unordered_map<std::string, std::vector<std::string>>& in
+);
 
 template<typename T>
 std::unordered_map<T, std::vector<T>> readGraphFromFile(

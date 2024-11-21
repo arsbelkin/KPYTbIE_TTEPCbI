@@ -9,74 +9,45 @@
 using namespace std;
 
 
-std::unordered_map<std::string, std::vector<std::string>> readStringGraphFromFile(
-    const std::string &path_to_file
-){
-    std::unordered_map<std::string, std::vector<std::string>> graph;
+#define ATOI(s) s[0]-'A'+1
 
-    ifstream file(path_to_file);
-    string line;
-
-    if (!file) {
-        std::cerr << "Error opening file!" << endl;
-        return graph; 
-    }
-
-    while (getline(file, line)){
-        if (line.empty()) {
-            continue;
-        }
-
-        istringstream iss(line);
-        string from, to;
-
-        if (iss >> from >> to) {
-            graph[from].push_back(to);
-        }
-
-        if (!from.empty() && to.empty()){
-            graph[from] = {};
-        }
-        
-    }
-
-    file.close();
-
-    return graph;
-}
-
-
-
-std::unordered_map<int, std::vector<int>> readIntGraphFromFile(
-    const std::string &path_to_file
+std::unordered_map<int, std::vector<int>> ConvertStrToInt(
+    const std::unordered_map<std::string, std::vector<std::string>>& in
 )
 {
-       std::unordered_map<int, std::vector<int>> graph;
 
-  ifstream file(path_to_file);
-    string line;
-
-    if (!file) {
-        std::cerr << "Error opening file!" << endl;
-        return graph; 
+    for (auto& [k, V]: in)
+    {
+        std::cout<<k<<std::endl;
+        for (auto& v: V)
+            std::cout<<v<< ' ';
+        std::cout<<std::endl;
     }
-
-    while (getline(file, line)){
-        if (line.empty()) {
+    std::cout<<std::endl;      
+    std::cout<<std::endl;
+    std::unordered_map<int, std::vector<int>> graph;
+    for (auto& [k, V]: in)
+    {
+        if (k.empty())
+        {
+            // std::cout<<"@@@@@"<<std::endl;
             continue;
         }
-
-        istringstream iss(line);
-        int from, to;
-        iss >> from;
-        if (iss.peek()==' ')
-        {
-            iss>> to;
-            graph[from].push_back(to);
-        }
-        else
-            graph[from] = {};
+        
+        std::vector<int> res;
+        for (auto& v:V)
+            if (!v.empty())
+                res.push_back(ATOI(v));
+        graph[ATOI(k)] = res;
+        
     }
-    file.close();
+    for (auto& [k, V]: graph)
+    {
+        std::cout<<k<<std::endl;
+        for (auto& v: V)
+            std::cout<<v<< ' ';
+        std::cout<<std::endl;
+    }
+            
     return graph;
 }

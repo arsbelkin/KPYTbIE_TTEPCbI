@@ -32,11 +32,11 @@ std::queue<DataSet<int>> GenerateIntDataSets(){
         //{"large numeric correct graph", readGraphFromFile("../../topological_sort/tests/datasets/files/largeCorrectGraph.txt"), 1},
         //{"small cycle graph", readGraphFromFile("../../topological_sort/tests/datasets/files/smallCycleGraph.txt"), 0},
         {"large numeric cycle graph", readGraphFromFile<int>("../../topological_sort/tests/datasets/files/largeCycleGraph.txt"), 0},
-        //{"star graph", readGraphFromFile("../../topological_sort/tests/datasets/files/star_graph.txt"), 1},
+        //{"star graph", ConvertStrToInt(readGraphFromFile<std::string>("../../topological_sort/tests/datasets/files/star_graph.txt")), 1},
         {"10000-100 graph", readGraphFromFile<int>("../../topological_sort/tests/datasets/files/10000-100_graph.txt"), 1},
         {"10000-5000 graph", readGraphFromFile<int>("../../topological_sort/tests/datasets/files/10000-5000_graph.txt"), 1},
         {"10000-10000 graph", readGraphFromFile<int>("../../topological_sort/tests/datasets/files/10000-10000_graph.txt"), 1},
         //{"10000-10000 cycle graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-10000_graph_cycle.txt"), 0},
-        //{"10000-30000 graph", readGraphFromFile("../../topological_sort/tests/datasets/files/10000-30000_graph.txt"), 1},
+        {"10000-30000 graph", readGraphFromFile<int>("../../topological_sort/tests/datasets/files/10000-30000_graph.txt"), 1},
     });
 }

@@ -13,9 +13,9 @@ set(SRC_DIR topological_sort/tests/)
 
 set(SRC_LIST
     ${SRC_DIR}/DataSetRegister.cpp 
-    #${SRC_DIR}/GraphReader.cpp 
+    ${SRC_DIR}/GraphReader.cpp 
     ${SRC_DIR}/logger.cpp 
-    ${SRC_DIR}/tests_functions.cpp
+    #${SRC_DIR}/tests_functions.cpp
     ${SRC_DIR}/../algorithms/algorithms.cpp
     # здесь указывается относительный путь до вашего файла
     # пример:

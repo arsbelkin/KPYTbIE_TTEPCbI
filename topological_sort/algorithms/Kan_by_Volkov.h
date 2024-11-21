@@ -40,7 +40,7 @@ std::vector<T> Kan_by_Volkov(std::unordered_map<T, std::vector<T>>& graph)
 			if (inDegree[neighbor] == 0) {
 				zero.push(neighbor);
 			}
-		}
+	}
 	}
 
 if (sort.size() != inDegree.size()) {
