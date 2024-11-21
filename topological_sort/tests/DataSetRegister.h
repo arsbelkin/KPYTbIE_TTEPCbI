@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 
+
 template<typename T>
 struct DataSet{
     std::string description;
@@ -14,4 +15,3 @@ struct DataSet{
 
 std::queue<DataSet<int>> GenerateIntDataSets();
 std::queue<DataSet<std::string>> GenerateStringDataSets();
-
