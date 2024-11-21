@@ -15,39 +15,16 @@ std::unordered_map<int, std::vector<int>> ConvertStrToInt(
     const std::unordered_map<std::string, std::vector<std::string>>& in
 )
 {
-
-    for (auto& [k, V]: in)
-    {
-        std::cout<<k<<std::endl;
-        for (auto& v: V)
-            std::cout<<v<< ' ';
-        std::cout<<std::endl;
-    }
-    std::cout<<std::endl;      
-    std::cout<<std::endl;
     std::unordered_map<int, std::vector<int>> graph;
-    for (auto& [k, V]: in)
-    {
-        if (k.empty())
-        {
-            // std::cout<<"@@@@@"<<std::endl;
+    for (auto& [k, V]: in) {
+        if (k.empty()) {
             continue;
         }
-        
         std::vector<int> res;
-        for (auto& v:V)
-            if (!v.empty())
-                res.push_back(ATOI(v));
+        for (auto& v:V){
+            if (!v.empty()) res.push_back(ATOI(v));
+        }
         graph[ATOI(k)] = res;
-        
     }
-    for (auto& [k, V]: graph)
-    {
-        std::cout<<k<<std::endl;
-        for (auto& v: V)
-            std::cout<<v<< ' ';
-        std::cout<<std::endl;
-    }
-            
     return graph;
 }
