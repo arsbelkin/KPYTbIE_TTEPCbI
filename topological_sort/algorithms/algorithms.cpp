@@ -14,10 +14,10 @@ int main(){
     ostringstream oss{};
     
 
-    auto DataSets = GenerateDataSets();
+    auto StrDataSets = GenerateStringDataSets();
 
-    while (!DataSets.empty()){
-        auto& ds = DataSets.front();
+    while (!StrDataSets.empty()){
+        auto& ds = StrDataSets.front();
 
         oss << endl << endl << "***************** " << ds.description << " *****************" << endl;
 
@@ -31,10 +31,34 @@ int main(){
         RUN(Kan_by_Volkov<string>);
         //RUN(dfs_by_Makkoveeva);
 
-        DataSets.pop();
+        StrDataSets.pop();
 
         oss << "**************************************" << endl;
     }
+
+
+    auto IntDataSets = GenerateIntDataSets();
+
+    while (!IntDataSets.empty()){
+        auto& ds = IntDataSets.front();
+
+        oss << endl << endl << "***************** " << ds.description << " *****************" << endl;
+
+        // так будет вызываться ваш алгоритм сортировки     
+        // Пример:
+        //RUN(topologicalSort_by_Belkin)
+        //RUN(второй_алгоритм);
+        //RUN(третий_алгоритм);
+        //RUN(Demukrone_by_Balpeisov);
+        //RUN(TaryanSort_by_Maslov);
+        RUN(Kan_by_Volkov<int>);
+        //RUN(dfs_by_Makkoveeva);
+
+        IntDataSets.pop();
+
+        oss << "**************************************" << endl;
+    }
+
 
     logger.log(oss.str());
 

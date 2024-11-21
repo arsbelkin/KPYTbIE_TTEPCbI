@@ -38,7 +38,7 @@ bool IsCorrectTopologicalSort(
 
 // основная функция, которая производит расчет времени
 template<typename T>
-void Run(std::string method_name, Algorithm<T> alg, DataSet ds, std::ostringstream &oss){
+void Run(std::string method_name, Algorithm<T> alg, DataSet<T> ds, std::ostringstream &oss){
     oss << "----------------------------------------" << std::endl;
 
     auto start = system_clock::now();
@@ -48,18 +48,18 @@ void Run(std::string method_name, Algorithm<T> alg, DataSet ds, std::ostringstre
 
     oss << "Method: " << method_name << std::endl;
     oss << "Dataset: " << ds.description << std::endl;
-    oss << "Number of vertices: " << ds.graph.size() << std::endl;
-    oss << "Number of edges: " << edges_number(ds.graph) << std::endl;
-    oss << "Can be sorted: " << ds.can_be_sorted << std::endl;
+    // oss << "Number of vertices: " << ds.graph.size() << std::endl;
+    // oss << "Number of edges: " << edges_number(ds.graph) << std::endl;
+    // oss << "Can be sorted: " << ds.can_be_sorted << std::endl;
     oss << "Time: " << time << std::endl;
-    print_TS(result, oss, method_name + " " + ds.description);
+    // print_TS(result, oss, method_name + " " + ds.description);
 
-    oss << "Is sorted correctly: ";
-    if (ds.can_be_sorted){
-        oss << IsCorrectTopologicalSort(ds.graph, result) << std::endl;
-    } else {
-        oss << (result[0] == "-1") << std::endl;
-    }
+    // oss << "Is sorted correctly: ";
+    // if (ds.can_be_sorted){
+    //     oss << IsCorrectTopologicalSort(ds.graph, result) << std::endl;
+    // } else {
+    //     oss << (!result.size()) << std::endl;
+    // }
 
     oss << "----------------------------------------" << std::endl;
 }

@@ -8,17 +8,27 @@
 
 
 //функция для считывая графа из файла
+// std::unordered_map<std::string, std::vector<std::string>> readStringGraphFromFile(
+//     const std::string &path_to_file
+// );
+
+// std::unordered_map<int, std::vector<int>> readIntGraphFromFile(
+//     const std::string &path_to_file
+// );
+
+
 template<typename T>
 std::unordered_map<T, std::vector<T>> readGraphFromFile(
     const std::string &path_to_file
-){
+)
+{
     std::unordered_map<T, std::vector<T>> graph;
 
     std::ifstream file(path_to_file);
     std::string line;
 
     if (!file) {
-        std::cerr << "Error opening file!" << endl;
+        std::cerr << "Error opening file!" << std::endl;
         return graph; 
     }
 
@@ -27,20 +37,17 @@ std::unordered_map<T, std::vector<T>> readGraphFromFile(
             continue;
         }
 
-        istringstream iss(line);
+        std::istringstream iss(line);
         T from, to;
-
-        if (iss >> from >> to) {
+        iss >> from;
+        if (iss.peek()==' ')
+        {
+            iss>> to;
             graph[from].push_back(to);
         }
-
-        if (!from.empty() && to.empty()){
+        else
             graph[from] = {};
-        }
-        
     }
-
     file.close();
-
     return graph;
 }
