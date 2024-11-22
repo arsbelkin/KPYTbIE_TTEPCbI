@@ -1,4 +1,4 @@
-#include "algorithms.h"
+#pragma once
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -7,8 +7,8 @@
 
 using namespace std;
 
-
-void dfs(string node, unordered_map<string, vector<string>>& graph, unordered_map<string, bool>& visited, unordered_map<string, bool> visitedway, bool& cycle)
+template<typename T>
+void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_map<T, bool>& visited, std::unordered_map<T, bool> visitedway, bool& cycle)
 {
     // помечаем текущую вершину как посещенную
     visited[node] = true;
@@ -28,17 +28,18 @@ void dfs(string node, unordered_map<string, vector<string>>& graph, unordered_ma
     }
 }
 
-vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& graph)
+template <typename T>
+vector<T> Demukrone_by_Balpeisov(unordered_map<T, vector<T>>& graph)
 {
     int n = graph.size(); //кол-во вершин
     // !!!!!!!!
-    unordered_map<string, int> inDegree; // входящие степени вершины
-    unordered_set<string> pop_elem; // удаленные элементы
-    vector<string> sorted_graph; //сортированный граф
+    std::unordered_map<T, int> inDegree; // входящие степени вершины
+    std::unordered_set<T> pop_elem; // удаленные элементы
+    std::vector<T> sorted_graph; //сортированный граф
 
     bool cycle = false; //наличие цикла
-    unordered_map<string, bool> visited; //посещённые вершины за все иттерации
-    unordered_map<string, bool> visitedway; //посещённые вершины за эту иттерацию
+    std::unordered_map<T, bool> visited; //посещённые вершины за все иттерации
+    std::unordered_map<T, bool> visitedway; //посещённые вершины за эту иттерацию
 
     for (auto& pair: graph)     
     {
@@ -47,7 +48,7 @@ vector<string> Demukrone_by_Balpeisov(unordered_map<string, vector<string>>& gra
             sorted_graph.push_back("-1");
             return sorted_graph;
         }
-        string node = pair.first;
+        T node = pair.first;
         if (!visited[node]) {
             dfs(node, graph, visited, visitedway, cycle);
         }
