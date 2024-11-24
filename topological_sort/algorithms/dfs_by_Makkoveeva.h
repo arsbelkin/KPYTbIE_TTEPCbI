@@ -1,28 +1,26 @@
-#include "algorithms.h"
+#pragma once
 #include <unordered_map>
 #include<vector>
 #include <iostream>
 #include <string>
 #include<stack>
-#include <algorithm>
 
-using namespace std;
-
-vector<string> dfs_by_Makkoveeva(unordered_map<string, vector<string>> &graph) 
+template <typename T>
+std::vector<T> dfs_by_Makkoveeva(std::unordered_map<T, std::vector<T>> &graph) 
 {
-	vector<string>sortedgraph;
-	unordered_map<string, int>visited;
-	vector<string>stack;
+	std::vector<T>sortedgraph;
+	std::unordered_map<T, int>visited;
+	std::vector<T>stack;
 	bool cycle = false;
 	for (auto& pair:graph)
 	{
-		const string& node=pair.first;
+		const T& node=pair.first;
 		if (visited[node] == 0)
 		{
 			stack.push_back(node);
 			while (!stack.empty()&&!cycle)
 			{
-				string currentnode = stack.back();
+				T currentnode = stack.back();
 				stack.pop_back();
 				if (visited[currentnode] == 0)
 				{
@@ -49,7 +47,7 @@ vector<string> dfs_by_Makkoveeva(unordered_map<string, vector<string>> &graph)
 			}
 			if (cycle)
 			{
-				return { "-1" };
+				return { };
 			}
 		}
 	}
