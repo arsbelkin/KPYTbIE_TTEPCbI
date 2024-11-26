@@ -10,7 +10,6 @@ void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_ma
     // Помечаем текущую вершину как посещенную
     visited[node] = true;
     visitedway[node] = true;
-    // Рекурсивно посещаем все соседние вершины
     for (auto& neighbor: graph[node]) {
         if (cycle)
             return;
@@ -23,10 +22,7 @@ void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_ma
         if (!visited[neighbor]) {
             dfs(neighbor, graph, visited,visitedway, cycle, Stack);
         }
-
     }
-
-    // Добавляем текущую вершину в стек после посещения всех соседей
     Stack.push(node);
 }
 template<typename T>
@@ -47,13 +43,9 @@ std::vector<T> TaryanSort_by_Maslov(std::unordered_map<T, std::vector<T>>& graph
             dfs(pair.first, graph, visited,visitedway, cycle, Stack);
         }
     }
-
-    // Извлекаем элементы из стека в вектор для получения результата
-    
     while (!Stack.empty()) {
         sortedOrder.push_back(Stack.top());
         Stack.pop();
     }
-
     return sortedOrder;
 }
