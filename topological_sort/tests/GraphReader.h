@@ -7,17 +7,17 @@
 #include <string>
 
 
-std::unordered_map<int, std::vector<int>> ConvertStrToInt(
-    const std::unordered_map<std::string, std::vector<std::string>>& in
+std::unordered_map<int, std::unordered_set<int>> ConvertStrToInt(
+    const std::unordered_map<std::string, std::unordered_set<std::string>>& in
 );
 
 
 template<typename T>
-std::unordered_map<T, std::vector<T>> readGraphFromFile(
+std::unordered_map<T, std::unordered_set<T>> readGraphFromFile(
     const std::string &path_to_file
 )
 {
-    std::unordered_map<T, std::vector<T>> graph;
+    std::unordered_map<T, std::unordered_set<T>> graph;
 
     std::ifstream file(path_to_file);
     std::string line;
@@ -37,7 +37,7 @@ std::unordered_map<T, std::vector<T>> readGraphFromFile(
         iss >> from;
         if (iss.peek()==' '){
             iss >> to;
-            graph[from].push_back(to);
+            graph[from].emplace(to);
         }
         else graph[from] = {};
     }

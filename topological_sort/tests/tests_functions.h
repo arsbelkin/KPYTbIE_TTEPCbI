@@ -46,7 +46,7 @@ void print_TS(std::vector<T> &order, std::ostringstream &oss, std::string file_n
 }
 
 template<typename T>
-int edges_number(std::unordered_map<T, std::vector<T>> &graph){
+int edges_number(std::unordered_map<T, std::unordered_set<T>> &graph){
     int counter = 0;
 
     for (auto& pair: graph){
@@ -71,7 +71,7 @@ bool IsSet(const std::vector<T> &order){
 
 template<typename T>
 bool IsCorrectTopologicalSort(
-    const std::unordered_map<T, std::vector<T>> &graph,
+    const std::unordered_map<T, std::unordered_set<T>> &graph,
     const std::vector<T> &order
 ){
     if ((graph.size() != order.size()) || !IsSet(order)){

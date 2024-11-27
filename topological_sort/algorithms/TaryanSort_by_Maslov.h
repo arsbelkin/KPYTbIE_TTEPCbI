@@ -2,11 +2,15 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <stack>
 #include <sstream>
+
 using namespace std;
+
+
 template<typename T>
-void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_map<T, bool>& visited, std::unordered_map<T, bool> visitedway, bool& cycle, std::stack<T>& Stack) {
+void dfs(T node, std::unordered_map<T, std::unordered_set<T>>& graph, std::unordered_map<T, bool>& visited, std::unordered_map<T, bool> visitedway, bool& cycle, std::stack<T>& Stack) {
     // Помечаем текущую вершину как посещенную
     visited[node] = true;
     visitedway[node] = true;
@@ -25,8 +29,9 @@ void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_ma
     }
     Stack.push(node);
 }
+
 template<typename T>
-std::vector<T> TaryanSort_by_Maslov(std::unordered_map<T, std::vector<T>>& graph) {
+std::vector<T> TaryanSort_by_Maslov(std::unordered_map<T, std::unordered_set<T>>& graph) {
     std::unordered_map<T, bool> visited;
     std::unordered_map<T, bool> visitedway;
     bool cycle = false;
@@ -36,8 +41,7 @@ std::vector<T> TaryanSort_by_Maslov(std::unordered_map<T, std::vector<T>>& graph
     for (auto& pair : graph) {
         if (cycle) 
         {
-            sortedOrder.push_back("-1");
-            return sortedOrder;
+            return { };
         }
         if (!visited[pair.first]) {
             dfs(pair.first, graph, visited,visitedway, cycle, Stack);

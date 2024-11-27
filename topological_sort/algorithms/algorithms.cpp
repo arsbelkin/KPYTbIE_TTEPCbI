@@ -51,7 +51,7 @@ int main(){
 
         // так будет вызываться ваш алгоритм сортировки     
         // Пример:
-        //RUN(topologicalSort_by_Belkin<int)
+        //RUN(topologicalSort_by_Belkin<int>)
         //RUN(второй_алгоритм);
         //RUN(третий_алгоритм);
         RUN(Demukrone_by_Balpeisov<int>);

@@ -1,12 +1,13 @@
 #pragma once
 #include <unordered_map>
+#include <unordered_set>
 #include<vector>
 #include <iostream>
 #include <string>
 #include<stack>
 
 template <typename T>
-std::vector<T> dfs_by_Makkoveeva(std::unordered_map<T, std::vector<T>> &graph) 
+std::vector<T> dfs_by_Makkoveeva(std::unordered_map<T, std::unordered_set<T>> &graph) 
 {
 	std::vector<T>sortedgraph;
 	std::unordered_map<T, int>visited;
@@ -26,7 +27,7 @@ std::vector<T> dfs_by_Makkoveeva(std::unordered_map<T, std::vector<T>> &graph)
 				{
 					visited[currentnode] = 1;
 					stack.push_back(currentnode);
-					for (const string& neighbor : graph[currentnode])
+					for (const T& neighbor : graph[currentnode])
 					{
 						if (visited[neighbor] == 0)
 						{

@@ -5,7 +5,7 @@
 
 
 template<typename T>
-std::vector<T> Kan_by_Volkov(std::unordered_map<T, std::vector<T>>& graph)
+std::vector<T> Kan_by_Volkov(std::unordered_map<T, std::unordered_set<T>>& graph)
 {
 	std::unordered_map<T, int> inDegree;
 

@@ -8,7 +8,7 @@
 using namespace std;
 
 template<typename T>
-void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_map<T, bool>& visited, std::unordered_map<T, bool> visitedway, bool& cycle)
+void dfs(T node, std::unordered_map<T, std::unordered_set<T>>& graph, std::unordered_map<T, bool>& visited, std::unordered_map<T, bool> visitedway, bool& cycle)
 {
     // помечаем текущую вершину как посещенную
     visited[node] = true;
@@ -29,10 +29,9 @@ void dfs(T node, std::unordered_map<T, std::vector<T>>& graph, std::unordered_ma
 }
 
 template <typename T>
-vector<T> Demukrone_by_Balpeisov(unordered_map<T, vector<T>>& graph)
+vector<T> Demukrone_by_Balpeisov(unordered_map<T, std::unordered_set<T>>& graph)
 {
     int n = graph.size(); //кол-во вершин
-    // !!!!!!!!
     std::unordered_map<T, int> inDegree; // входящие степени вершины
     std::unordered_set<T> pop_elem; // удаленные элементы
     std::vector<T> sorted_graph; //сортированный граф
@@ -45,8 +44,7 @@ vector<T> Demukrone_by_Balpeisov(unordered_map<T, vector<T>>& graph)
     {
         if (cycle) 
         {
-            sorted_graph.push_back("-1");
-            return sorted_graph;
+            return { };
         }
         T node = pair.first;
         if (!visited[node]) {
